@@ -1,0 +1,117 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <base href="/">
+  <title>Medical Insights</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="icon" href="assets/img.jpg" type="image/x-icon">
+
+  <!-- build:css app.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+  <!-- endinject -->
+
+  <link rel="stylesheet" href="styles/css/app.css">
+  <!-- endbuild -->
+     
+  
+</head>
+
+<body ng-app="app">
+
+ 
+  <div class="container body-content"  ui-view></div>
+  <footer data-ng-include=" 'templates/footer.html'"></footer>
+
+
+  <!-- bower:js -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+  <script src="bower_components/lodash/lodash.js"></script>
+  <script src="bower_components/markerclustererplus/src/markerclusterer.js"></script>
+  <script src="bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js"></script>
+  <script src="bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js"></script>
+  <script src="bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js"></script>
+  <script src="bower_components/js-rich-marker/src/richmarker.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-file-model/angular-file-model.js"></script>
+  <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+  <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+  <!-- endinject -->
+  <!-- endbuild -->
+
+  <!-- build:js app.js -->
+  <!-- inject:js -->
+  <script src="app/app.js"></script>
+  <script src="app/home/home.module.js"></script>
+  <script src="app/about/about.controller.js"></script>
+  <script src="app/admin/admin.controller.js"></script>
+  <script src="app/adminAppointments/ReviewCtrl.controller.js"></script>
+  <script src="app/adminAppointments/appService.service.js"></script>
+  <script src="app/adminAppointments/appoinmentHistory.controller.js"></script>
+  <script src="app/adminAppointments/deleteCtrl.controller.js"></script>
+  <script src="app/adminAppointments/editCtrl.controller.js"></script>
+  <script src="app/adminAppointments/reviewFactory.factory.js"></script>
+  <script src="app/adminReview/registerService.service.js"></script>
+  <script src="app/adminReview/review.controller.js"></script>
+  <script src="app/adminReview/reviews.directive.js"></script>
+  <script src="app/appointment/appoint.directive.js"></script>
+  <script src="app/appointment/appointment.controller.js"></script>
+  <script src="app/appointment/appointmentService.service.js"></script>
+  <script src="app/doc/docCtrl.controller.js"></script>
+  <script src="app/doc/docService.service.js"></script>
+  <script src="app/doc/introCtrl.controller.js"></script>
+  <script src="app/home/home.controller.js"></script>
+  <script src="app/home/home.route.js"></script>
+  <script src="app/login/authInterceptor.factory.js"></script>
+  <script src="app/login/getLogin.controller.js"></script>
+  <script src="app/login/tokenFactory.factory.js"></script>
+  <script src="app/login/userService.service.js"></script>
+  <script src="app/msgs/msgCtrl.controller.js"></script>
+  <script src="app/msgs/msgDelete.service.js"></script>
+  <script src="app/msgs/msgService.service.js"></script>
+  <script src="app/previousAppointments/AppEditCtrl.controller.js"></script>
+  <script src="app/previousAppointments/DeleteAppCtrl.controller.js"></script>
+  <script src="app/previousAppointments/changeAppointmentService.service.js"></script>
+  <script src="app/previousAppointments/data.factory.js"></script>
+  <script src="app/previousAppointments/previous.controller.js"></script>
+  <script src="app/previousAppointments/previousService.service.js"></script>
+  <script src="app/previousAppointments/review.controller.js"></script>
+  <script src="app/register/reg.directive.js"></script>
+  <script src="app/register/register.controller.js"></script>
+  <script src="app/register/registrationService.service.js"></script>
+  <script src="app/reply/addReplyService.service.js"></script>
+  <script src="app/reply/reply.controller.js"></script>
+  <script src="app/reply/replyService.service.js"></script>
+  <script src="app/update/update.controller.js"></script>
+  <script src="app/update/updateInfo.service.js"></script>
+  <script src="app/update/updateService.service.js"></script>
+  <script src="app/welcome/EmailCtrl.controller.js"></script>
+  <script src="app/welcome/FormCtrl.controller.js"></script>
+  <script src="app/welcome/dataService.service.js"></script>
+  <script src="app/welcome/date.provider.js"></script>
+  <script src="app/welcome/discussionStartService.service.js"></script>
+  <script src="app/welcome/emailService.service.js"></script>
+  <script src="app/welcome/welcome.controller.js"></script>
+  <!-- endinject -->
+  <!-- endbuild -->
+  
+</body>
+
+</html>

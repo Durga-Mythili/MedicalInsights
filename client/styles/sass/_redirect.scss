@@ -1,0 +1,25 @@
+.choice{
+background-color: #F1F1EF;
+
+}
+
+
+.disp {
+    font-size: 20px;
+    color: $black;
+
+    &:hover {
+      color: $red;
+      font-size: 32px;
+
+    }
+    &:active {
+      color: $red;
+      font-size: 38px;
+
+    }
+  }
+
+  .wid{
+    width:50%;
+  }

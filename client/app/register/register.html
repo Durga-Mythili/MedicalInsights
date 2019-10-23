@@ -1,0 +1,18 @@
+<header data-ng-include="'templates/header.html'" class="navbar-fixed-top"></header>
+<div>
+
+
+    <div  class="input-group input-group shift login">
+            <legend><h2 class="text-success">Get Registered</h2></legend>
+            <div uib-alert class="alert alert-success"  close="vm.close()" ng-if="vm.data" >
+               Registration is complete!
+          </div>
+          <div uib-alert class="alert alert-warning"  close="vm.Errclose()" ng-if="vm.Errdata" >
+                Registration Number is already in use!
+           </div>
+          <div uib-alert class="alert alert-danger"  close="vm.closeErr1()" ng-if="vm.dataErr" >
+            Registration is Incomplete, please try again later
+       </div>
+       <register ng-if="vm.disp"></register>
+        </div>
+</div>

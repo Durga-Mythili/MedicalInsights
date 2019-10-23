@@ -1,0 +1,106 @@
+<div class="modal-header">
+    <h3>Edit Appointment</h3>
+</div>
+<form name="form.editForm" ng-submit="" novalidate ng-init="getData()">
+  <div uib-alert class="alert alert-warning"  close="closeValidate()" ng-if="validate" >
+    Please fill in all the details
+</div>
+
+  <div class="well"> <p> Name :
+          <input type="text" class="form-control"  placeholder="enter your name" ng-keypress="clearName()" name="userName" ng-model="userName" minlength="5"  maxlength="20" required ng-blur="verifyName()" onkeypress=" return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)|| event.charCode==32"/>
+
+       </p>
+       <div ng-messages="form.editForm.userName.$error">
+               <p class="warn" ng-message="minlength">Your name is too short.</p>
+               <p class="warn" ng-message="maxlength">Your name is too long.</p>
+               <p  class="warn" ng-message="required">Your name is required.</p>
+               {{errName}}
+
+           </div>
+       <p>Age :
+           <input type="number" class="form-control" name="age" min="1" max="90" ng-model="age"  required/>
+
+       </p>
+       <div ng-messages="form.editForm.age.$error">
+               <p class="warn" ng-message="min">Please enter a positive age</p>
+               <p class="warn" ng-message="max">Please enter age between 1-90</p>
+               <p class="warn" ng-message="required">Your age is required.</p>
+           </div>
+       <p> Sex :
+           <select required ng-model="sext" name="sex" ng-options="sex as sex for sex in sex"  >
+           </select>
+          <br/>
+       </p>
+       <div ng-messages="form.editForm.sex.$error">
+                <p class="warn" ng-message="required">Please select your Sex.</p>
+           </div>
+       <p>Date of Appointment:
+
+           <input type="date" name="date" class="form-control" ng-model="date" id="datepicker" ng-change="verifyDate()" ng-change="clearDate()"required/> <span class="warn"></span>
+           <div ng-messages="form.editForm.date.$error">
+              <p class="warn" ng-message="required">Please select a Date.</p>
+            <p class="warn">{{dateCheck}}</p>
+         </div>
+       </p>
+       <div ng-messages="form.editForm.date.$error">
+               <p class="warn" ng-message="required">Please a date as Date "mm/dd/yyyy".</p>
+          </div>
+
+          <div>Department:
+              <select required ng-model="selectDept" name="dept" ng-change="changeDoc(selectDept)" ng-options="dept as dept for dept in dept" ng-change="clearData()"></select>
+              <div ng-messages="appointment.dept.$error">
+                  <p class="warn" ng-message="required">Please select Department.</p>
+              </div>
+          </div>
+          <br/>
+          <div>
+              Doctor:
+              <select required ng-model="selectDoc" name="doc"  ng-options="doc as doc for doc in doc" ng-change="clearData()"></select>
+              <div ng-messages="appointment.doc.$error">
+                  <p class="warn" ng-message="required">Please select a Doctor.</p>
+              </div>
+
+          </div>
+          <table border="1px">
+              <tr>
+                  <th>For the Date : <b>{{date | date : "MMMM/dd/yyyy"}}</b></th>
+            <td><button class="btn btn-success" ng-click="checkAvailability(selectDoc,date, selectDept)" ng-disabled="view">Check Availability</button></td></tr>
+          </table>
+
+      <div>
+
+
+
+      <div ng-show="disp">
+         <div>
+             <h3>The chosen time is {{checkTime}}</h3>
+          <button class="btn btn-danger" ng-click="checkAvailability(selectDoc,date, selectDept)" ng-disabled="view">Choose another Time</button>
+          <button class="btn btn-success" ng-click="checkChosenTime()">Confirm Time</button>
+      </div>
+
+         <table ng-hide="view" ng-show="show">
+             <tr ng-model="time" name="time"  ng-repeat=" times in timings track by $index">
+                 <td>{{times}}</td><td><button class="btn btn-primary" ng-click="choose(times)">Take Slot</button></td>
+
+             </tr>
+         </table>
+</div>
+       <p>Enter the symptoms of the problem:
+           <br/>
+           <textarea id="problem" rows="5" cols="50" name="symptoms" minlength="5" ng-model="symptoms"  required></textarea>
+       </p>
+       <div ng-messages="form.editForm.symptoms.$error">
+               <p class="warn"  ng-message="required">Please enter your symptoms</p>
+               <p class="warn"  ng-message="minlength">Please provide a detailed description of your symptoms</p>
+
+          </div>
+
+       <p>
+           <button class="btn btn-success"  type="button" ng-click="submitForm(userName,age,sext,date,symptoms)" ng-disabled="!disp">Change Appointment!</button> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+           <br/>
+
+
+       </p>
+      </div>
+   </form>

@@ -1,0 +1,59 @@
+<header data-ng-include="'templates/loginHeader.html'" class="navbar-fixed-top"></header>
+
+
+<div id="login">
+        <div class="shift" ng-init="appoint.getData()">
+    <legend><h2 class="text-success">Make a Appointment</h2></legend>
+
+            <div uib-alert class="alert alert-danger"  close="appoint.closeOne()" ng-if="appoint.validate" >
+                    Please fill in all the details
+              </div>
+              <div uib-alert class="alert alert-danger"  close="appoint.clearFail()" ng-if="appoint.fail" >
+               You have a lot of appointments on your schedule for today. Please try another day for appointment
+          </div>
+              <div uib-alert class="alert alert-success"  close="appoint.closeRes()" ng-if="appoint.showres" >
+                   Your appointment is confirmed
+              </div>
+              <div uib-alert class="alert alert-warning"  close="appoint.close()" ng-if="appoint.delete" >
+                    The appointment is cancelled
+               </div>
+               <appoint ng-show="appoint.app"></appoint>
+            <div ng-show="appoint.show">
+                <table>
+                    <tr>
+                        <th>User Name :</th> <td>{{appoint.userName}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Age :</th> <td>{{appoint.age}}</td>
+                    </tr>
+                    <tr>
+                        <th>Sex : </th><td>{{appoint.sext}}</td>
+                    </tr>
+                    <tr>
+                        <th>Appointment with Department:</th> <td>{{appoint.selectDept}}</td>
+                    </tr>
+                    <tr>
+                        <th>Doctor:</th> <td>{{appoint.selectDoc}}</td>
+                    </tr>
+                    <tr>
+                        <th>Appointment confirmation Date :</th> <td>{{appoint.date | date : "MMMM/dd/yyyy"}}</td>
+                    </tr>
+                    <tr>
+                        <th>Appointment confirmation Time :</th> <td>{{appoint.checkTime}}</td>
+                    </tr>
+                    <tr>
+                        <th>Symptoms : </th> <td>{{appoint.symptoms}}</td>
+                    </tr>
+                    <tr>
+                        <th>Contact : </th> <td>{{appoint.contact}}</td>
+                    </tr>
+                    <tr>
+                        <td><button  id ="appoint" class="btn btn-success" ng-click="appoint.appointment()">Confim Appointment</button></td>
+                        <td><button id="dis" class="btn btn-danger" ng-click="appoint.drop()" >Drop Appointment</button></td>
+                    </tr>
+                </table>
+                {{appoint.res}}
+            </div>
+        </div>
+</div>

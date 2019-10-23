@@ -1,0 +1,121 @@
+<div>
+    <form name="appointment" ng-submit- "" novalidate>
+        <p> Name :
+
+
+
+            <input type="text" class="form-control" placeholder="enter your name" name="userName" ng-model="appoint.userName" minlength="5"
+                maxlength="20" required onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)|| event.charCode==32"
+            />
+
+        </p>
+        <div ng-messages="appointment.userName.$error">
+            <p class="warn" ng-message="minlength">Your name is too short.</p>
+            <p class="warn" ng-message="maxlength">Your name is too long.</p>
+            <p class="warn" ng-message="required">Your name is required.</p>
+        </div>
+        <p>Age :
+            <input type="number" class="form-control" name="age" min="1" max="90" ng-model="appoint.age" required/>
+
+        </p>
+        <div ng-messages="appointment.age.$error">
+            <p class="warn" ng-message="min">Please enter a positive age</p>
+            <p class="warn" ng-message="max">Please enter age between 1-90</p>
+            <p class="warn" ng-message="required">Your age is required.</p>
+        </div>
+        <p> Gender :
+            <select required ng-model="appoint.sext" name="sex" ng-options="sex as sex for sex in appoint.sex">
+                </select>
+            <br/>
+        </p>
+        <div ng-messages="appointment.sex.$error">
+            <p class="warn" ng-message="required">Please select your Gender.</p>
+        </div>
+        <div>Department:
+            <select required ng-model="appoint.selectDept" name="dept" ng-change="appoint.changeDoc(appoint.selectDept)" ng-options="dept as dept for dept in appoint.dept"></select>
+            <div ng-messages="appointment.dept.$error">
+                <p class="warn" ng-message="required">Please select Department.</p>
+            </div>
+        </div>
+        <br/>
+        <div>
+            Doctor:
+            <select required ng-model="appoint.selectDoc" name="doc"  ng-options="doc as doc for doc in appoint.doc" ng-change="appoint.clearDoc()"></select>
+            <div ng-messages="appointment.doc.$error">
+                <p class="warn" ng-message="required">Please select a Doctor.</p>
+            </div>
+
+        </div>
+        <p>Date of appointment:
+
+            <input type="date" name="date" class="form-control" ng-model="appoint.date" id="datepicker" ng-change="appoint.verifyDate()"
+                ng-change="appoint.clearDate()" required/> <span class="warn">{{appoint.dateCheck}}</span>
+        </p>
+
+        <div ng-messages="appointment.date.$error">
+            <p class="warn" ng-message="required">Please a date as Date "mm/dd/yyyy ".</p>
+        </div>
+        <div ng-show="appoint.selectedDet">
+            <p>Availability of Doctor <b>{{appoint.selectDoc}}</b></p>
+            <table border="1px">
+                <tr>
+                    <th>For the Date : <b>{{appoint.date | date : "MMMM/dd/yyyy"}}</b></th>
+              <td><button class="btn btn-success" ng-click="appoint.checkAvailability(appoint.selectDoc,appoint.date, appoint.selectDept)" ng-disabled="appoint.view">Check Availability</button></td></tr>
+            </table>
+        </div>
+        <div>
+            <button ng-click="appoint.getDet()" class="btn btn-warning" ng-hide="appoint.dispTime">Get More Details</button>
+            <div uib-alert class="alert alert-danger"  close="appoint.fillDispClose()" ng-if="appoint.fillDisp" >
+                    Please fill in all the details
+              </div>
+        </div>
+        <div ng-show="appoint.dispTime">
+          <div></div>
+           <div>
+               <h3>The chosen time is {{appoint.checkTime}}</h3>
+            <button class="btn btn-danger" ng-click="appoint.checkAvailability(appoint.selectDoc,appoint.date, appoint.selectDept)" ng-disabled="appoint.view">Choose another Time</button>
+            <button class="btn btn-success" ng-click="appoint.checkChosenTime()">Confirm Time</button>
+        </div>
+        <div ng-show="appoint.timeShow">
+
+           <table ng-hide="appoint.view">
+               <tr ng-model="appoint.time" name="time"  ng-repeat=" times in appoint.timings">
+                   <td>{{times}}</td><td><button class="btn btn-primary" ng-click="appoint.choose(times)">Take Slot</button></td>
+
+               </tr>
+           </table>
+        </div>
+
+        <p>Enter the symptoms of the problem:
+            <br/>
+            <textarea id="problem" rows="5" cols="50" name="symptoms" minlength="5" ng-model="appoint.symptoms" required></textarea>
+        </p>
+        <div ng-messages="appointment.symptoms.$error">
+            <p class="warn" ng-message="required">Please enter your symptoms</p>
+            <p class="warn" ng-message="minlength">Please provide a detailed description of your symptoms</p>
+
+        </div>
+        <p>Contact :
+            <input type="text" placeholder="999#######" name="contact" minlength="10" maxlength="10" ng-model="appoint.contact" ng-blur="appoint.checkContact()"
+                required onkeyup="this.value=this.value.replace(/[^\d]/,'')" pattern="^[1-9][0-9]*$" />
+        </p>
+        <div ng-messages="appointment.contact.$error">
+            <p class="warn" ng-message="required">Please enter your Contact information</p>
+            <p class="warn" ng-message="minlength">Please enter 10 digit contact number</p>
+            <p class="warn" ng-message="pattern">Please enter another contact number. Contact number cannot start with '0'</p>
+
+
+        </div>
+        <p>
+            <button class="btn btn-success" type="submit" ng-click="appoint.confirmAppointment()">Make a Appointment!</button>
+            <br/>
+
+
+        </p>
+        <div uib-alert class="alert alert-warning"  close="appoint.closeTime()" ng-if="appoint.timeDisp" >
+           Please confirm a time
+       </div>
+
+    </div>
+    </form>
+</div>
